@@ -28,6 +28,18 @@ h1 {
   left: 20px;
 }
 
+.dropbtn-gp {
+  background-color: #151515;
+  color: white;
+  width: 150px;
+  padding: 16px;
+  font-size: 16px;
+  border: 2px solid white;
+  cursor: pointer;
+  position: relative;
+  left: 20px;
+}
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -56,7 +68,7 @@ h1 {
 }
 
 .dropdown:hover .dropbtn {
-  background-color: #3e8e41;
+  background-color: #035962;
 }
 
 .dropdown-arrow {
