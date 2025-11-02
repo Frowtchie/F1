@@ -1,21 +1,41 @@
 # 🏎️ Frowtch F1 Data Analytics
 
-**Smart Formula 1 data visualization with automatic real/sample data detection**
+**Smart Formula 1 data visualization with real FastF1 API integration - Multiple deployment options**
 
 ## ✨ Features
 
-- 🏁 **Smart Data Detection:** Automatically uses real F1 data when available, sample data offline
-- 📊 **Interactive Charts:** Lap time analysis with Chart.js visualization  
-- 🎯 **Real Telemetry:** Click any lap point to view speed, throttle, and brake data (real data mode)
-- 🌐 **Cloud Ready:** Deploy to Render, Railway, or Heroku with zero configuration
-- 📱 **Responsive Design:** Works on desktop, tablet, and mobile
-- 🔄 **Offline Capable:** Graceful fallback to sample data when server unavailable
+- 🏁 **Real F1 Data:** Official timing data from FastF1 API (2018-2024)
+- 📊 **Interactive Charts:** Lap time analysis with Chart.js and Plotly visualization  
+- 🎯 **Real Telemetry:** Speed, throttle, and brake data from actual races
+- 🌐 **Multiple Deployments:** Streamlit Cloud, Flask server, or static demo
+- 📱 **Professional UI:** Racing-themed responsive design
+- 🔄 **Smart Fallback:** Automatic sample data when server unavailable
 
-## 🚀 Quick Start
+## � Deployment Options
 
-### **Option 1: With Real F1 Data (Recommended)**
+### **🎯 Option 1: Streamlit Cloud (Recommended for Portfolio)**
+**Best for: Real data, 24/7 accessibility, professional portfolio showcase**
+
 ```bash
-# 1. Start the unified app
+# Deploy to Streamlit Cloud for free real F1 data
+streamlit run streamlit_app.py
+
+# Then deploy to: https://share.streamlit.io
+# Repository: Your GitHub repo
+# Main file: streamlit_app.py
+```
+
+✅ **Live Example**: [F1 Analytics on Streamlit](https://frowtchie-f1-analytics.streamlit.app)
+- Professional dashboard interface
+- Real FastF1 API integration
+- Interactive race analysis
+- Free 24/7 hosting
+
+### **🔧 Option 2: Local Flask Server (Full Features)**
+**Best for: Development, local testing, all features**
+
+```bash
+# 1. Start the unified Flask app
 .\start-app.bat
 
 # 2. Open browser
@@ -25,10 +45,15 @@ http://localhost:5000
 # 4. Select year → race → drivers → compare!
 ```
 
-### **Option 2: Offline Demo**
+### **📄 Option 3: Static Demo (No Server)**
+**Best for: Quick demo, static hosting, offline use**
+
 ```bash
 # Open directly in browser (no server needed)
 index.html
+
+# Will automatically show "📊 SAMPLE DATA" indicator
+```
 
 # Will automatically show "📊 SAMPLE DATA" indicator
 ```
@@ -61,19 +86,43 @@ The app intelligently detects your environment:
 
 ```
 F1/
-├── 📄 index.html              # Main application (unified smart version)
-├── 📄 app.py                  # Flask server with FastF1 integration
-├── 📄 start-app.bat          # Simple startup script
-├── 📁 js/
-│   └── 📄 f1-app.js          # Smart JavaScript with auto-detection
-├── 📁 css/
-│   └── 📄 mystyle.css        # F1-themed styling with animations
-├── 📁 data/                   # Sample data for offline mode
-├── 📁 cache/                  # FastF1 data cache (auto-created)
-├── 📄 requirements.txt        # Python dependencies
-├── 📄 Procfile                # Cloud deployment config
-└── 📄 runtime.txt             # Python version specification
+├── � STREAMLIT VERSION (Recommended for Cloud)
+│   ├── streamlit_app.py          # Streamlit dashboard app
+│   ├── requirements_streamlit.txt # Streamlit dependencies
+│   └── STREAMLIT-DEPLOYMENT.md   # Streamlit Cloud deployment guide
+│
+├── 🌐 FLASK VERSION (Original)
+│   ├── index.html                # Main web application
+│   ├── app.py                    # Flask server with FastF1
+│   ├── start-app.bat            # Local server startup
+│   ├── js/f1-app.js             # Smart JavaScript client
+│   ├── css/mystyle.css          # F1-themed styling
+│   ├── requirements.txt         # Flask dependencies
+│   ├── Procfile                 # Cloud deployment config
+│   └── CLOUD-DEPLOYMENT.md      # Flask deployment guide
+│
+├── 📁 data/                      # Sample data for offline mode
+├── 📁 cache/                     # FastF1 data cache (auto-created)
+└── 📄 README.md                  # This file
 ```
+
+## 🎯 Which Version to Use?
+
+### **🚀 Streamlit Version** (streamlit_app.py)
+**✅ Best for**: Portfolio, real users, 24/7 accessibility
+- Professional dashboard interface
+- Free Streamlit Cloud hosting
+- Real FastF1 data integration
+- Interactive widgets and charts
+- Perfect for portfolio showcase
+
+### **🌐 Flask Version** (index.html + app.py)  
+**✅ Best for**: Development, customization, embedding
+- Full control over UI/UX
+- Custom JavaScript interactions
+- Embeddable in other websites
+- Original Chart.js visualizations
+- Smart fallback to sample data
 
 ## ☁️ Cloud Deployment
 
