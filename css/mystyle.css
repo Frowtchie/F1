@@ -1,91 +1,572 @@
+/* F1 Racing Theme - Enhanced Styling */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --f1-red: #E10600;
+  --f1-dark: #0D1117;
+  --f1-darker: #010409;
+  --f1-accent: #FF8C00;
+  --f1-blue: #00D2FF;
+  --f1-silver: #C9C9C9;
+  --f1-white: #FFFFFF;
+  --f1-green: #00FF88;
+  --gradient-primary: linear-gradient(135deg, #E10600 0%, #FF8C00 100%);
+  --gradient-secondary: linear-gradient(135deg, #00D2FF 0%, #0099CC 100%);
+  --gradient-dark: linear-gradient(135deg, #0D1117 0%, #010409 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #151515;
-  font-family: "Lucida Handwriting", sans-serif;
+  background: var(--gradient-dark);
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--f1-white);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 }
 
+/* Racing track background animation */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(90deg, transparent 49%, rgba(255, 255, 255, 0.03) 50%, transparent 51%),
+    linear-gradient(0deg, transparent 49%, rgba(255, 255, 255, 0.02) 50%, transparent 51%);
+  background-size: 60px 60px;
+  animation: grid-move 20s linear infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes grid-move {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(60px, 60px); }
+}
+
+/* Header styling */
 h1 {
-  color: white;
+  font-family: 'Orbitron', monospace;
+  font-weight: 900;
+  font-size: 3.5rem;
+  text-align: center;
+  background: var(--gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(225, 6, 0, 0.5);
+  margin: 2rem 0;
+  letter-spacing: 3px;
+  animation: pulse-glow 3s ease-in-out infinite alternate;
 }
 
+@keyframes pulse-glow {
+  from { filter: brightness(1) drop-shadow(0 0 20px rgba(225, 6, 0, 0.5)); }
+  to { filter: brightness(1.2) drop-shadow(0 0 40px rgba(225, 6, 0, 0.8)); }
+}
+
+h2 {
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  color: var(--f1-accent);
+  font-size: 1.8rem;
+  margin: 2rem 0 1rem 2rem;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 10px rgba(255, 140, 0, 0.5);
+}
+
+/* Main content box */
 .box {
-  margin: auto;
-  margin-top: 50px;
-  width: 60%;
-  border: 2px solid turquoise;
-  padding: 50px;
-  color: turquoise;
+  margin: 3rem auto;
+  width: min(90%, 800px);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 2px solid transparent;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)),
+                    var(--gradient-secondary);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  padding: 3rem;
+  border-radius: 20px;
+  color: var(--f1-white);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 2px 10px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
-.dropbtn {
-  background-color: #151515;
-  color: white;
-  width: 150px;
-  padding: 16px;
-  font-size: 16px;
-  border: 2px solid white;
-  cursor: pointer;
-  position: relative;
-  left: 20px;
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 15px 45px rgba(0, 0, 0, 0.4),
+    inset 0 2px 15px rgba(255, 255, 255, 0.15);
 }
 
-.dropbtn-gp {
-  background-color: #151515;
-  color: white;
-  width: 150px;
-  padding: 16px;
-  font-size: 16px;
-  border: 2px solid white;
-  cursor: pointer;
-  position: relative;
-  left: 20px;
+.box b {
+  color: var(--f1-accent);
+  font-weight: 700;
 }
 
+.box a {
+  color: var(--f1-blue);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.box a:hover {
+  color: var(--f1-green);
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+/* Enhanced dropdown styling */
 .dropdown {
   position: relative;
   display: inline-block;
+  margin: 0 1rem 2rem 2rem;
+}
+
+.dropbtn, .dropbtn-gp {
+  background: var(--gradient-primary);
+  color: var(--f1-white);
+  width: 200px;
+  padding: 15px 35px 15px 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Rajdhani', sans-serif;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 
+    0 4px 15px rgba(225, 6, 0, 0.3),
+    inset 0 2px 5px rgba(255, 255, 255, 0.2);
+}
+
+.dropbtn:hover, .dropbtn-gp:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 25px rgba(225, 6, 0, 0.5),
+    inset 0 2px 8px rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #FF4500 0%, #FF8C00 100%);
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  background: rgba(13, 17, 23, 0.95);
+  backdrop-filter: blur(15px);
+  min-width: 220px;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  border-radius: 12px;
+  margin-top: 2px;
+  animation: dropdown-appear 0.3s ease;
+  top: 100%;
+  left: 0;
+}
+
+@keyframes dropdown-appear {
+  from { 
+    opacity: 0; 
+    transform: translateY(-10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.dropdown-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: 3px;
 }
 
 .dropdown-content a {
-  color: black;
-  padding: 12px 16px;
+  color: var(--f1-white);
+  padding: 15px 20px;
   text-decoration: none;
   display: block;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
 }
 
-.dropdown-content a:hover {background-color: #808080}
-
-.dropdown:hover .dropdown-content {
-  display: block;
+.dropdown-content a:hover {
+  background: rgba(225, 6, 0, 0.2);
+  border-left: 3px solid var(--f1-red);
+  color: var(--f1-accent);
+  transform: translateX(5px);
 }
 
-.dropdown:hover .dropbtn {
-  background-color: #035962;
+/* Remove hover-based dropdown behavior - now controlled by JavaScript */
+.dropdown .dropdown-content {
+  display: none;
 }
 
+/* Add padding to dropdown to prevent gap issues */
+.dropdown .dropdown-content::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: transparent;
+}
+
+/* Modern arrow styling - now controlled by JavaScript */
 .dropdown-arrow {
-  height: 0;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 0;
-	border-left: 10px solid transparent;
-	border-right: 10px solid transparent;
-	border-top: 10px solid white;
-  position: relative;
-  top: -30px;
-  left: 130px;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--f1-white);
+  transition: all 0.3s ease;
 }
 
-.dropdown:hover .dropdown-arrow {
-  top: -40px;
-	border-left: 10px solid transparent;
-	border-right: 10px solid transparent;
-	border-bottom: 10px solid white;
-  border-top: 10px solid transparent;
+.dropdown.active .dropdown-arrow {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Chart container styling */
+#chart-container {
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 2px 10px rgba(255, 255, 255, 0.05);
+  min-height: 500px;
+  max-height: none;
+  width: min(95%, 1200px);
+}
+
+/* Chart canvas specific styling */
+#lapChart {
+  max-height: 580px !important;
+  width: 100% !important;
+}
+
+#telemetryChart {
+  max-height: 530px !important;
+  width: 100% !important;
+}
+
+/* Race analysis section */
+#race-analysis-section {
+  margin-top: 2rem;
+}
+
+#driver-selection-container {
+  margin: 2rem auto 3rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  width: min(90%, 800px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.chart-section, .telemetry-section {
+  margin: 2rem 0;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+  max-height: none;
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+}
+
+.chart-section:hover, .telemetry-section:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 140, 0, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.chart-section h3, .telemetry-section h3 {
+  font-family: 'Orbitron', monospace;
+  color: var(--f1-accent);
+  margin-bottom: 2rem;
+  margin-top: 0;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 140, 0, 0.3);
+}
+
+/* Driver selector styling */
+.driver-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.driver-select {
+  background: rgba(13, 17, 23, 0.8);
+  color: var(--f1-white);
+  border: 2px solid var(--f1-blue);
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 500;
+  min-width: 250px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.driver-select:focus {
+  outline: none;
+  border-color: var(--f1-accent);
+  box-shadow: 
+    0 0 15px rgba(255, 140, 0, 0.5),
+    inset 0 2px 8px rgba(255, 140, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.compare-button {
+  background: var(--gradient-secondary);
+  color: var(--f1-white);
+  border: none;
+  padding: 15px 30px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: 'Rajdhani', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 
+    0 4px 15px rgba(0, 210, 255, 0.3),
+    inset 0 2px 5px rgba(255, 255, 255, 0.2);
+}
+
+.compare-button:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #00E5FF 0%, #0099CC 100%);
+  box-shadow: 
+    0 8px 25px rgba(0, 210, 255, 0.5),
+    inset 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+
+.compare-button:active {
+  transform: translateY(-1px);
+}
+
+/* Loading animation */
+.loading {
+  text-align: center;
+  padding: 3rem;
+}
+
+.loading h3 {
+  font-family: 'Orbitron', monospace;
+  margin-bottom: 2rem;
+  color: var(--f1-accent);
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid var(--f1-red);
+  border-right: 4px solid var(--f1-accent);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: f1-spin 1s linear infinite;
+  margin: 2rem auto;
+  box-shadow: 0 0 20px rgba(225, 6, 0, 0.3);
+}
+
+@keyframes f1-spin {
+  0% { 
+    transform: rotate(0deg); 
+    box-shadow: 0 0 20px rgba(225, 6, 0, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(255, 140, 0, 0.5);
+  }
+  100% { 
+    transform: rotate(360deg); 
+    box-shadow: 0 0 20px rgba(225, 6, 0, 0.3);
+  }
+}
+
+/* Error styling */
+.error {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(225, 6, 0, 0.1);
+  border: 2px solid var(--f1-red);
+  border-radius: 15px;
+  margin: 2rem 0;
+  backdrop-filter: blur(10px);
+}
+
+.error h3 {
+  color: var(--f1-red);
+  font-family: 'Orbitron', monospace;
+  margin-bottom: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .box {
+    width: 95%;
+    padding: 2rem;
+    margin: 2rem auto;
+  }
+  
+  .driver-selector {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .driver-select {
+    min-width: 280px;
+    width: 100%;
+  }
+  
+  .dropbtn, .dropbtn-gp {
+    width: 180px;
+    margin: 0.5rem;
+  }
+  
+  #chart-container {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+  
+  h2 {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+  
+  .box {
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .dropbtn, .dropbtn-gp {
+    width: 160px;
+    padding: 12px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .compare-button {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+}
+
+/* Custom scrollbar for the page */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--f1-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #FF4500 0%, #FF8C00 100%);
+}
+
+/* Racing stripes decoration */
+hr {
+  border: none;
+  height: 4px;
+  background: var(--gradient-primary);
+  margin: 3rem auto;
+  width: 80%;
+  border-radius: 2px;
+  box-shadow: 0 2px 10px rgba(225, 6, 0, 0.3);
+  animation: pulse-line 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-line {
+  from { opacity: 0.7; transform: scaleX(1); }
+  to { opacity: 1; transform: scaleX(1.02); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .driver-selector {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .driver-select {
+    min-width: 250px;
+  }
+  
+  .box {
+    width: 90%;
+    padding: 30px;
+  }
 }
